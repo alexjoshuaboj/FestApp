@@ -4,3 +4,9 @@ img {
   display: block;
 
 }
+
+body {
+  filter: grayscale(80%);
+  background-image: url(../assets/img/102845.jpg);
+  background-size: 100%;
+}
