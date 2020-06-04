@@ -1,26 +1,19 @@
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <!-- Brand -->
-
-  <img src="assets/img/Logo.svg" alt="">
-
-  <!-- Toggler/collapsibe Button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <!-- Navbar links -->
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-    </ul>
+<!-- TOGGLE NAVBAR FIXED -->
+<div class="fixed-top">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h5 class="text-white h4">Mejora tu experiencia festivalera</h5>
+      <a class="btn btn-dark" href="">Usuario</a>
+      <a class="btn btn-dark" href="">Horarios</a>
+      <a class="btn btn-dark" href="">Festivales</a>
+    </div>
   </div>
-</nav>
+  <nav class="navbar navbar-dark bg-dark">
+    <img class="col-xl-1 col-md-2 col-sm-2" src="assets/img/Logo.svg" alt="">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+      aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>
 <router-outlet></router-outlet>

@@ -1,46 +1,76 @@
-<div class="container">
-  <div class="row">
-    <div class="col-8">
-      <h3>Registrate</h3>
+<div class="container p-5">
+  <div class="row d-flex justify-content-center mt-5">
+    <div class="col-xl-6 col-md-8 col-sm-10">
+      <h3 class="d-flex justify-content-center" style="color:white">Login <img src="../../assets/img/Logo.svg"></h3>
+      <!-- FORMULARIO REGISTRO -->
       <form [formGroup]="formUser" (ngSubmit)="onClick()">
         <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" class="form-control" name="username" formControlName="username">
+          <label style="color:white" for="username">Username</label>
+          <input type="text" class="form-control has-error has-feedback" id="inputError" name="username"
+            formControlName="username">
           <p class="error" *ngIf="formUser.controls.username.errors && formUser.controls.username.touched">Debe ser un
             correo electrónico</p>
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label style="color:white" for="password">Password</label>
           <input type="password" class="form-control" name="password" formControlName="pass">
-          <p class="error" *ngIf="formUser.controls.pass.errors && formUser.controls.pass.touched">El campo
-            tiene
-            errores</p>
+          <p class="error" *ngIf="formUser.controls.pass.errors && formUser.controls.pass.touched">El campo tiene que
+            ser completado</p>
         </div>
-        <button [disabled]="!formUser.valid" type="submit" class="btn btn-primary">Entrar</button>
+        <div class="d-flex justify-content-between">
+          <button [disabled]="!formUser.valid" type="submit" class="entry btn btn-primary">Entry</button>
+          <button type="button" class="register btn btn-block btn-primary ml-3" data-toggle="modal"
+            data-target="#exampleModal">
+            Register
+          </button>
+        </div>
       </form>
-
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Registrate
-      </button>
+      <!-- REGISTRO CON FACEBOOK -->
+      <button class="btn btn-block btn-primary mt-2">Registrate con Facebook</button>
+      <!-- REGISTRO CON SPOTIFY -->
+      <button class="btn btn-block btn-primary">Registrate con Spotify</button>
+      <!-- MODAL -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">¿Eres nuevo?</h5>
+              <h5 class="modal-title" id="exampleModalLabel">¿Eres nuevo? Registrate para poder utilizar nuestra App
+              </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+            <!-- FORMULARIO MODAL PARA REGISTRARSE -->
             <div class="modal-body">
               <form [formGroup]="formRegister">
                 <div class="form-group">
-                  <label for="user">Correo electrónico</label>
-                  <input type="text" class="form-control" name="username" formControlName="username">
+                  <label for="user">Nombre</label>
+                  <input type="text" class="form-control" name="username" formControlName="nombre">
                 </div>
                 <div class="form-group">
-                  <label for="pass">Contraseña</label>
-                  <input type="password" class="form-control" name="password" formControlName="pass">
+                  <label for="pass">Apellidos</label>
+                  <input type="password" class="form-control" name="password" formControlName="apellidos">
+                </div>
+                <div class="form-group">
+                  <label for="user">Correo electrónico</label>
+                  <input type="text" class="form-control" name="username" formControlName="correo_electronico">
+                </div>
+                <div class="form-group">
+                  <label for="user">Contraseña</label>
+                  <input type="text" class="form-control" name="username" formControlName="contrasena">
+                </div>
+                <div class="form-group">
+                  <label for="user">Repetir contraseña</label>
+                  <input type="text" class="form-control" name="username" formControlName="repetir_contrasena">
+                </div>
+                <div class="form-group">
+                  <label for="user">Telefono</label>
+                  <input type="text" class="form-control" name="username" formControlName="telefono">
+                </div>
+                <div class="form-group">
+                  <label for="user">Username</label>
+                  <input type="text" class="form-control" name="username" formControlName="username">
                 </div>
               </form>
             </div>

@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+body {
+    /* filter: grayscale(80%); */
+    background-image: url(assets/img/fotoback.png);
+    background-size: 100%;
+  }
