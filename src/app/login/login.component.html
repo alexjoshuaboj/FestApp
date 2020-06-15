@@ -2,19 +2,20 @@
   <div class="row d-flex justify-content-center mt-5">
     <div class="col-xl-6 col-md-8 col-sm-10">
       <h3 class="d-flex justify-content-center" style="color:white"><img src="../../assets/img/festapp.png"></h3>
-      <!-- FORMULARIO REGISTRO -->
+      <!-- FORMULARIO LOGIN -->
       <form [formGroup]="formUser" (ngSubmit)="onClick()">
         <div class="form-group">
-          <label style="color:white" for="username">Username</label>
-          <input type="text" class="form-control has-error has-feedback" id="inputError" name="username"
-            formControlName="username">
-          <p class="error" *ngIf="formUser.controls.username.errors && formUser.controls.username.touched">Debe ser un
+          <label style="color:white" for="email">Email</label>
+          <input type="text" class="form-control has-error has-feedback" id="inputError" name="email"
+            formControlName="email">
+          <p class="error" *ngIf="formUser.controls.email.errors && formUser.controls.email.touched">Debe ser un
             correo electrónico</p>
         </div>
         <div class="form-group">
           <label style="color:white" for="password">Password</label>
-          <input type="password" class="form-control" name="password" formControlName="pass">
-          <p class="error" *ngIf="formUser.controls.pass.errors && formUser.controls.pass.touched">El campo tiene que
+          <input type="password" class="form-control" name="password" formControlName="password">
+          <p class="error" *ngIf="formUser.controls.password.errors && formUser.controls.password.touched">El campo
+            tiene que
             ser completado</p>
         </div>
         <div class="d-flex justify-content-between">
@@ -43,30 +44,30 @@
             </div>
             <!-- FORMULARIO MODAL PARA REGISTRARSE -->
             <div class="modal-body">
-              <form [formGroup]="formRegister">
+              <form action="http://localhost:3000/users/register" method="POST" [formGroup]="formRegister">
                 <div class="form-group">
-                  <label for="user">Nombre</label>
-                  <input type="text" class="form-control" name="username" formControlName="nombre">
+                  <label for="user">Name</label>
+                  <input type="text" class="form-control" name="name" formControlName="name">
                 </div>
                 <div class="form-group">
-                  <label for="pass">Apellidos</label>
-                  <input type="password" class="form-control" name="password" formControlName="apellidos">
+                  <label for="pass">Surname</label>
+                  <input type="text" class="form-control" name="surname" formControlName="surname">
                 </div>
                 <div class="form-group">
-                  <label for="user">Correo electrónico</label>
-                  <input type="text" class="form-control" name="username" formControlName="correo_electronico">
+                  <label for="user">Email</label>
+                  <input type="text" class="form-control" name="email" formControlName="email">
                 </div>
                 <div class="form-group">
-                  <label for="user">Contraseña</label>
-                  <input type="text" class="form-control" name="username" formControlName="contrasena">
+                  <label for="user">Password</label>
+                  <input type="password" class="form-control" name="password" formControlName="password">
                 </div>
                 <div class="form-group">
-                  <label for="user">Repetir contraseña</label>
-                  <input type="text" class="form-control" name="username" formControlName="repetir_contrasena">
+                  <label for="user">Repeat Password</label>
+                  <input type="password" class="form-control" name="repeat_password" formControlName="repeat_password">
                 </div>
                 <div class="form-group">
-                  <label for="user">Telefono</label>
-                  <input type="text" class="form-control" name="username" formControlName="telefono">
+                  <label for="user">Phone Number</label>
+                  <input type="text" class="form-control" name="phone_number" formControlName="phone_number">
                 </div>
                 <div class="form-group">
                   <label for="user">Username</label>

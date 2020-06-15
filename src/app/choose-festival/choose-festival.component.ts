@@ -7,7 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChooseFestivalComponent implements OnInit {
 
-  constructor() { }
+  typesOfShoes: any[];
+
+  constructor() {
+    this.typesOfShoes = [
+      {
+        'name': 'Boots'
+      },
+      'Clogs',
+      'Loafers',
+      'Moccasins',
+      'Sneakers'
+    ]
+  }
 
   ngOnInit(): void {
   }
