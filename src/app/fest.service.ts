@@ -26,5 +26,23 @@ export class FestService {
     return this.httpClient.post(this.loginURL, body).toPromise();
   }
 
+  setToken(token) {
+    localStorage.setItem('token_user', token);
+  }
+
+  getToken() {
+    localStorage.getItem('token_user');
+  };
+
+  getValidatorToken(token): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        user_token: token
+      })
+    };
+    console.log(token)
+    return this.httpClient.get(`http://localhost:3000/checkToken/${token}`, httpOptions).toPromise();
+  }
+
 
 }

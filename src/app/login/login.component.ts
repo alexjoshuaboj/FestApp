@@ -51,6 +51,8 @@ export class LoginComponent implements OnInit {
     this.festService.postLogin(this.formUser.value)
       .then(res => {
         if (res) {
+          let caca: Object = res;
+          this.festService.setToken(caca['token']);
           this.router.navigate(['/choose-fest']);
           const Toast = Swal.mixin({
             toast: true,
