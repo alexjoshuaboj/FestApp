@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FestService } from '../fest.service';
 import { Router } from '@angular/router';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -52,6 +52,22 @@ export class LoginComponent implements OnInit {
       .then(res => {
         if (res) {
           this.router.navigate(['/choose-fest']);
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+
+          Toast.fire({
+            icon: 'success',
+            title: 'Loggin successfully'
+          })
         }
       })
       .catch(err => console.log(err));
@@ -64,7 +80,6 @@ export class LoginComponent implements OnInit {
       .then((res) => {
         if (res.success) {
           this.router.navigate(['/choose-fest']);
-          swal("Welcome FestApp!", "Register done!", "success");
         }
       })
       .catch(err => console.log(err));

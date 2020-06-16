@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { MatListModule } from "@angular/material/list";
-import { MatIconModule } from "@angular/material/icon"
+import { MatIconModule } from "@angular/material/icon";
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,7 +35,8 @@ import { UserComponent } from './user/user.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    SweetAlert2Module
   ],
   providers: [],
   bootstrap: [AppComponent]
