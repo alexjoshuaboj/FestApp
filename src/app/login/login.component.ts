@@ -102,12 +102,12 @@ export class LoginComponent implements OnInit {
     console.log(this.formRegister.value);
   }
 
-  spotifyBTN() {
-    this.festService.getSpotifyAuth()
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => console.log(err));
-  }
+  /*   spotifyBTN() {
+      this.festService.getSpotifyAuth()
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => console.log(err));
+    } */
 
 }
