@@ -5,6 +5,8 @@ body {
   /* filter: grayscale(80%); */
   background-image: url(assets/img/204398-OZ3P4A-964.jpg);
   background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed
 }
 
 html,
