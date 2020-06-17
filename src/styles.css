@@ -2,9 +2,17 @@
 
 
 body {
-    /* filter: grayscale(80%); */
-    background-image: url(assets/img/fotoback.png);
-    background-size: 100%;
-  }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  /* filter: grayscale(80%); */
+  background-image: url(assets/img/happy-people-dance-in-nightclub-party-concert_31965-113.jpg);
+  background-size: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -21,7 +21,7 @@ export class LoginGuardGuard implements CanActivate {
     console.log(this.token);
     this.result = await this.festService.getValidatorToken(this.token);
     console.log('Cacas', this.result);
-    this.router.navigateByUrl('/login');
+    /* this.router.navigateByUrl('/login'); */
     return this.result;
     /* .then(result => {
       if (result === true) {

@@ -5,6 +5,9 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,7 +39,9 @@ import { UserComponent } from './user/user.component';
     BrowserAnimationsModule,
     MatListModule,
     MatIconModule,
-    SweetAlert2Module
+    SweetAlert2Module,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
