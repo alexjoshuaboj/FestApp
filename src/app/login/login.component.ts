@@ -32,15 +32,24 @@ export class LoginComponent implements OnInit {
     //User Register
     this.formRegister = new FormGroup({
       username: new FormControl('', [
-        Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
+        Validators.required
       ]),
       pass: new FormControl('', [
         Validators.required
       ]),
-      name: new FormControl(''),
-      surname: new FormControl(''),
-      email: new FormControl(''),
-      password: new FormControl(''),
+      name: new FormControl('', [
+        Validators.required
+      ]),
+      surname: new FormControl('', [
+        Validators.required
+      ]),
+      email: new FormControl('', [
+        Validators.pattern(/^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/),
+        Validators.required
+      ]),
+      password: new FormControl('', [
+        Validators.required
+      ]),
       repeat_password: new FormControl(''),
       phone_number: new FormControl(''),
     });

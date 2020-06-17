@@ -3,7 +3,7 @@
 
 body {
   /* filter: grayscale(80%); */
-  background-image: url(assets/img/happy-people-dance-in-nightclub-party-concert_31965-113.jpg);
+  background-image: url(assets/img/204398-OZ3P4A-964.jpg);
   background-size: 100%;
 }
 
@@ -15,4 +15,18 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.videoCont {
+
+
+  bottom: 0;
 }
