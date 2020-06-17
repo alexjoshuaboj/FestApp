@@ -61,7 +61,7 @@
             </div>
             <!-- FORMULARIO MODAL PARA REGISTRARSE -->
             <div class="modal-body">
-              <form action="http://localhost:3000/users/register" method="POST" [formGroup]="formRegister">
+              <form class="formRegister" [formGroup]="formRegister">
                 <div class="form-group">
                   <label for="user">Name</label>
                   <input type="text" class="form-control" name="name" formControlName="name">
