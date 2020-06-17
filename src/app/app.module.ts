@@ -6,6 +6,12 @@ import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MatInputModule } from '@angular/material/input';
+<<<<<<< HEAD
+=======
+import { MatButtonModule } from '@angular/material/button';
+
+
+>>>>>>> d33228e68c6ebe1e2580620c4caebfad343d6783
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,7 +43,12 @@ import { UserComponent } from './user/user.component';
     MatListModule,
     MatIconModule,
     SweetAlert2Module,
+<<<<<<< HEAD
     MatInputModule
+=======
+    MatInputModule,
+    MatButtonModule
+>>>>>>> d33228e68c6ebe1e2580620c4caebfad343d6783
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
     //User Login
     this.formUser = new FormGroup({
       email: new FormControl('', [
-        Validators.pattern(/^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/)
+        Validators.pattern(/^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/),
+        Validators.required
       ]),
       password: new FormControl('', [
         Validators.required
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
     //User Register
     this.formRegister = new FormGroup({
       username: new FormControl('', [
-        Validators.pattern(/^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/)
+        Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
       ]),
       pass: new FormControl('', [
         Validators.required

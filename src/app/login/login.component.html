@@ -3,21 +3,38 @@
     <div class="col-xl-6 col-md-8 col-sm-10">
       <h3 class="d-flex justify-content-center" style="color:white"><img src="../../assets/img/festapp.png"></h3>
       <!-- FORMULARIO LOGIN -->
-      <form [formGroup]="formUser" (ngSubmit)="onClick()">
-        <div class="form-group">
-          <label style="color:white" for="email">Email</label>
-          <input type="text" class="form-control has-error has-feedback" id="inputError" name="email"
+      <form class="formMaterial" [formGroup]="formUser" (ngSubmit)="onClick()">
+        <mat-form-field class="form">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="Ex. pat@example.com" id="inputError" name="email"
             formControlName="email">
-          <p class="error" *ngIf="formUser.controls.email.errors && formUser.controls.email.touched">Debe ser un
+          <mat-hint>Enter with your email</mat-hint>
+          <mat-error *ngIf="formUser.controls.email.errors && formUser.controls.email.touched">Email no valid
+          </mat-error>
+
+        </mat-form-field>
+        <mat-form-field class="form-pass">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="Use your password" name="password" formControlName="password">
+          <mat-hint>Enter with your password</mat-hint>
+          <mat-error *ngIf="formUser.controls.password.errors && formUser.controls.password.touched">Password no valid
+          </mat-error>
+
+        </mat-form-field>
+
+        <!-- <div class="form-group">
+          <label style="color:black" for="email">Email</label>
+          <input type="text" class="form-control has-error has-feedback">
+          <p class="error">Debe ser un
             correo electrónico</p>
         </div>
         <div class="form-group">
-          <label style="color:white" for="password">Password</label>
-          <input type="password" class="form-control" name="password" formControlName="password">
-          <p class="error" *ngIf="formUser.controls.password.errors && formUser.controls.password.touched">El campo
+          <label style="color:black" for="password">Password</label>
+          <input type="password" class="form-control" >
+          <p class="error" >El campo
             tiene que
             ser completado</p>
-        </div>
+        </div> -->
         <div class="d-flex justify-content-between">
           <button [disabled]="!formUser.valid" type="submit" class="entry btn btn-primary">Entry</button>
           <button type="button" class="register btn btn-block btn-primary ml-3" data-toggle="modal"
