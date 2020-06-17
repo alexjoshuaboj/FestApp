@@ -45,6 +45,10 @@ export class FestService {
   }
 
   getSpotifyAuth(): Promise<any> {
-    return this.httpClient.get<any>('http://localhost:3000/auth/spotify').toPromise();
+    return this.httpClient.get<any>('http://localhost:3000/auth/spotify', {
+      headers:
+        { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+    }
+    ).toPromise();
   }
 }

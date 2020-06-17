@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -104,8 +105,9 @@ export class LoginComponent implements OnInit {
   spotifyBTN() {
     this.festService.getSpotifyAuth()
       .then(res => {
-        this.router.navigate(['http://localhost:3000/auth/spotify'])
+        console.log(res);
       })
+      .catch(err => console.log(err));
   }
 
 }
