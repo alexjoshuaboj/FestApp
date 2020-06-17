@@ -5,7 +5,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-
+import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,7 +36,8 @@ import { UserComponent } from './user/user.component';
     BrowserAnimationsModule,
     MatListModule,
     MatIconModule,
-    SweetAlert2Module
+    SweetAlert2Module,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

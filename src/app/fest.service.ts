@@ -44,5 +44,7 @@ export class FestService {
     return this.httpClient.get(`http://localhost:3000/checkToken/${token}`, httpOptions).toPromise();
   }
 
-
+  getSpotifyAuth(): Promise<any> {
+    return this.httpClient.get<any>('http://localhost:3000/auth/spotify').toPromise();
+  }
 }

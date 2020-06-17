@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -42,6 +43,8 @@ export class LoginComponent implements OnInit {
       repeat_password: new FormControl(''),
       phone_number: new FormControl(''),
     });
+
+
   }
 
   ngOnInit(): void {
@@ -87,4 +90,12 @@ export class LoginComponent implements OnInit {
       .catch(err => console.log(err));
     console.log(this.formRegister.value);
   }
+
+  spotifyBTN() {
+    this.festService.getSpotifyAuth()
+      .then(res => {
+        this.router.navigate(['http://localhost:3000/auth/spotify'])
+      })
+  }
+
 }
