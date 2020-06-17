@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FestService } from '../fest.service';
+import * as jwt_decode from "jwt-decode";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-choose-festival',
@@ -7,21 +10,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChooseFestivalComponent implements OnInit {
 
-  typesOfShoes: any[];
+  festivales: any;
+  tokenInPage: any;
+  tokenUser: any;
+  result: any;
 
-  constructor() {
-    this.typesOfShoes = [
-      {
-        'name': 'Boots'
-      },
-      'Clogs',
-      'Loafers',
-      'Moccasins',
-      'Sneakers'
-    ]
+
+
+  constructor(private festService: FestService, private router: Router) {
+    this.tokenInPage = localStorage.getItem('token_user');
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+
+    this.festivales = await this.festService.getFest();
+    console.log(this.festivales);
+    this.tokenUser = this.getDecodedAccessToken(this.tokenInPage).userID;
+    console.log(this.tokenUser);
+
+  }
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    }
+    catch (Error) {
+      return null;
+    }
+  }
+  async selectFest(idFest, idUser) {
+    this.result = await this.festService.selectFest(idFest, idUser);
+    this.router.navigate(['/choose-artist']);
   }
 
 }

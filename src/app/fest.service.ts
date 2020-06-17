@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -45,10 +46,29 @@ export class FestService {
   }
 
   getSpotifyAuth(): Promise<any> {
+<<<<<<< HEAD
     return this.httpClient.get<any>('http://localhost:3000/auth/spotify', {
       headers:
         { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
     }
     ).toPromise();
+=======
+    return this.httpClient.get<any>('http://localhost:3000/auth/spotify').toPromise();
+  };
+
+  getFest() {
+
+    return this.httpClient.get("http://localhost:3000/fests").toPromise();
+  };
+
+  selectFest(pFestId, pIdUser) {
+
+    return this.httpClient.post('http://localhost:3000/fests/newfest', {
+      "idUser": pIdUser,
+      "idFestivales": pFestId
+    }).toPromise();
+>>>>>>> c734143c421f7a94dff523ed5570756063e4ad4f
   }
+
+
 }

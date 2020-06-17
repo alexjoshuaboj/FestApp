@@ -1,12 +1,14 @@
 <div class="container p-5 mt-5">
-    <mat-selection-list #shoes>
-        <mat-list-option *ngFor="let shoe of typesOfShoes">
-            {{shoe | json}}
-        </mat-list-option>
-    </mat-selection-list>
-    <p>
-        Options selected: {{shoes.selectedOptions.selected.length}}
-    </p>
+  <div class="d-flex justify-content-between">
+    <div *ngFor="let fest of festivales" class="card" style="width: 18rem;">
+      <img class="card-img-top" [src]="fest.img" [alt]="fest.nombre">
+      <div class="card-body">
+        <h5 class="card-title">{{fest.nombre}}</h5>
+        <p class="card-text">{{fest.direccion}}</p>
+        <button (click)="selectFest(fest.id, tokenUser)" class="btn btn-primary">Seleccionar</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 
