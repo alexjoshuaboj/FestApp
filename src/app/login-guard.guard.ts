@@ -19,18 +19,22 @@ export class LoginGuardGuard implements CanActivate {
   async canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<any> {
+    let time;
+    if (this.token !== null) {
+      this.tokenDes = this.getDecodedAccessToken(this.token);
+      console.log(this.tokenDes);
+      time = this.tokenDes.expireDATE - this.tokenDes.createDATE;
+    } else {
+      this.router.navigate(['/'])
+    }
 
-    this.tokenDes = this.getDecodedAccessToken(this.token);
-    console.log(this.tokenDes);
-    const time = this.tokenDes.expireDATE - this.tokenDes.createDATE;
 
 
 
     if (time > 0) {
       return true;
     } else {
-      this.router.navigateByUrl('/login');
-      console.log(time);
+
       return false;
     }
 
