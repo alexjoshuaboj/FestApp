@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { FestService } from './fest.service';
+import * as jwt_decode from "jwt-decode";
 
 
 @Injectable({
@@ -8,16 +9,33 @@ import { FestService } from './fest.service';
 })
 export class LoginGuardGuard implements CanActivate {
   token: any;
-  result: boolean;
+  tokenDes: any;
+  dataCreated: Date;
+  dataExpired: Date;
   constructor(private festService: FestService, private router: Router) {
-
-    this.result = false;
+    this.token = localStorage.getItem('token_user');
   }
 
   async canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<any> {
-    this.token = localStorage.getItem('token_user')
+
+    this.tokenDes = this.getDecodedAccessToken(this.token);
+    console.log(this.tokenDes);
+    const time = this.tokenDes.expireDATE - this.tokenDes.createDATE;
+
+
+
+    if (time > 0) {
+      return true;
+    } else {
+      this.router.navigateByUrl('/login');
+      console.log(time);
+      return false;
+    }
+
+
+    /* this.token = localStorage.getItem('token_user')
     console.log(this.token);
     this.result = await this.festService.getValidatorToken(this.token);
     console.log('Cacas', this.result);
@@ -27,7 +45,7 @@ export class LoginGuardGuard implements CanActivate {
     } else {
       this.router.navigate(['/login']);
       return false
-    }
+    } */
 
     /* .then(result => {
       if (result === true) {
@@ -43,5 +61,14 @@ export class LoginGuardGuard implements CanActivate {
 
 
   };
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    }
+    catch (Error) {
+      return null;
+    }
+  }
 
 }
