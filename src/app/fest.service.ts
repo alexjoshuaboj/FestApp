@@ -45,16 +45,9 @@ export class FestService {
     return this.httpClient.get(`http://localhost:3000/checkToken/${token}`, httpOptions).toPromise();
   }
 
-  getSpotifyAuth(): Promise<any> {
-<<<<<<< HEAD
-    return this.httpClient.get<any>('http://localhost:3000/auth/spotify', {
-      headers:
-        { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-    }
-    ).toPromise();
-=======
+  /* getSpotifyAuth(): Promise<any> {
     return this.httpClient.get<any>('http://localhost:3000/auth/spotify').toPromise();
-  };
+  }; */
 
   getFest() {
 
@@ -67,7 +60,6 @@ export class FestService {
       "idUser": pIdUser,
       "idFestivales": pFestId
     }).toPromise();
->>>>>>> c734143c421f7a94dff523ed5570756063e4ad4f
   }
 
 
