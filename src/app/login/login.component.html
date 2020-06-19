@@ -1,3 +1,7 @@
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+  src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v7.0&appId=1115581165484044&autoLogAppEvents=1"
+  nonce="5Abs79PK"></script>
 <div class="container p-5">
   <div class="row d-flex justify-content-center mt-5">
     <div class="col-xl-6 col-md-8 col-sm-10">
@@ -45,10 +49,12 @@
       </form>
       <!-- REGISTRO CON FACEBOOK -->
       <a href="http://localhost:3000/auth/facebook" class="btn btn-block btn-primary mt-2">Sign up with Facebook</a>
+
       <!-- REGISTRO CON SPOTIFY -->
       <a href="http://localhost:3000/auth/spotify" id="spotifyBTN" class="btn btn-block btn-primary">Sign up with
         Spotify</a>
-
+      <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-layout="default"
+        data-auto-logout-link="false" data-use-continue-as="true" data-width=""></div>
       <!-- MODAL -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
