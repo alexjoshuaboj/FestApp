@@ -39,7 +39,9 @@ export class ChooseFestivalComponent implements OnInit {
     }
   }
   async selectFest(idFest, idUser) {
+    localStorage.setItem('id_fest', idFest);
     this.result = await this.festService.selectFest(idFest, idUser);
+    localStorage.setItem('id_fest_user', this.result.insertId);
     this.router.navigate(['/choose-artist']);
   }
 

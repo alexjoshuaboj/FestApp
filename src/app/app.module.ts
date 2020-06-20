@@ -7,6 +7,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 
 
 
@@ -42,7 +44,8 @@ import { UserComponent } from './user/user.component';
     MatIconModule,
     SweetAlert2Module,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
