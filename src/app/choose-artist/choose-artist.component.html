@@ -1,1 +1,26 @@
-<p>choose-artist works!</p>
+<div class="container p-5 mt-5">
+
+
+  <!-- <mat-grid-list cols="4" rowHeight="150px">
+    <mat-grid-tile *ngFor="let band of bandas" [colspan]="1" [rowspan]="1"
+      [style.background-image]="'url('+band.img+')'" [style.background-size]="'cover'">
+      <mat-grid-tile-header>{{band.nombre}}</mat-grid-tile-header>
+    </mat-grid-tile>
+  </mat-grid-list> -->
+
+  <ul>
+    <li *ngFor="let band of bandas"><input type="checkbox" id="cb1" />
+      <label for="cb1"><img [src]="band.img" /></label>
+    </li>
+    <!--  <li><input type="checkbox" id="cb2" />
+      <label for="cb2"><img src="http://lorempixel.com/101/101" /></label>
+    </li>
+    <li><input type="checkbox" id="cb3" />
+      <label for="cb3"><img src="http://lorempixel.com/102/102" /></label>
+    </li>
+    <li><input type="checkbox" id="cb4" />
+      <label for="cb4"><img src="http://lorempixel.com/103/103" /></label>
+    </li> -->
+  </ul>
+
+</div>

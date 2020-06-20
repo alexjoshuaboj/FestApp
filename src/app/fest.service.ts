@@ -59,5 +59,9 @@ export class FestService {
     }).toPromise();
   }
 
+  getBands(idFest) {
+    return this.httpClient.get(`http://localhost:3000/fests/${idFest}/bands`).toPromise();
+  }
+
 
 }
