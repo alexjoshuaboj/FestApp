@@ -1,6 +1,8 @@
 .card {
   margin: 1em;
   height: 400px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
 }
 
 img {
@@ -8,3 +10,20 @@ img {
   height: 200px;
   box-sizing: border-box;
 }
+
+.card-title{
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.btn{
+  background: linear-gradient(to left, #6B2937, #A63041);
+  border: none;
+}
+
+
+/* Colores base de la imagen de fondo de la app.
+6B2937
+A63041 
+*/

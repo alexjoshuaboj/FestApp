@@ -23,10 +23,28 @@ img {
 }
 
 .navbar{
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255,255,255,0.05);
   color: white;
 }
 
 .logo{
-  width: 270px;
+  width: 30px;
+}
+
+.collapse {
+  position: relative;
+  margin-left: 30px;
+  color: white;
+}
+
+.collapse button{
+  position: absolute;
+  right: 2em;
+  background: linear-gradient(to left,#6B2937, #A63041);
+  border: none;
+}
+
+.collapse ul li a{
+  color: white;
+  font-weight: bolder;
 }

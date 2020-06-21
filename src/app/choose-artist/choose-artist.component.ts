@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FestService } from '../fest.service';
 import * as jwt_decode from "jwt-decode";
 
+
 @Component({
   selector: 'app-choose-artist',
   templateUrl: './choose-artist.component.html',
@@ -19,7 +20,6 @@ export class ChooseArtistComponent implements OnInit {
     this.tokenInPage = localStorage.getItem('token_user');
     this.idFest = localStorage.getItem('id_fest');
     this.bandasSeleccionadas = [];
-
   }
 
   async ngOnInit() {

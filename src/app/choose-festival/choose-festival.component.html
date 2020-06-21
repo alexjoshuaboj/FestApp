@@ -4,7 +4,7 @@
       <img class="card-img-top" [src]="fest.img" [alt]="fest.nombre">
       <div class="card-body">
         <h5 class="card-title">{{fest.nombre}}</h5>
-        <p class="card-text">{{fest.direccion}}</p>
+        <p class="card-text">Ubication: {{fest.direccion}}</p>
         <button (click)="selectFest(fest.id, tokenUser)" class="btn btn-primary">Seleccionar</button>
       </div>
     </div>
