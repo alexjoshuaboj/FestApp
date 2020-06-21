@@ -40,7 +40,18 @@ export class ChooseArtistComponent implements OnInit {
 
   selectBand(idBanda) {
 
+    const bandSelected = {
+      userFest: localStorage.getItem('id_fest_user'),
+      bandFest: idBanda
+    };
+    this.bandasSeleccionadas.push(bandSelected);
+    console.log(bandSelected);
+
+
   }
+
+
+
 
 
 }
