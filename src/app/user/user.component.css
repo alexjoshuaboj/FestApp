@@ -34,3 +34,17 @@
   text-decoration: underline;
   color: #FFFFFF;
 }
+
+
+.btn {
+  background: linear-gradient(to left, #6B2937, #A63041);
+  border: none;
+}
+
+h1 {
+  color: white;
+}
+
+h4 {
+  color: white;
+}

@@ -16,11 +16,14 @@ export class UserComponent implements OnInit {
   festivales: any;
   tokenInPage: any;
   tokenUser: any;
+  userInfo: any;
+  newDatas: FormGroup;
   constructor(
     private firebaseStorage: FirebaseStorageService,
     private festService: FestService
   ) {
     this.tokenInPage = localStorage.getItem('token_user');
+
   }
 
 
@@ -35,9 +38,29 @@ export class UserComponent implements OnInit {
   public porcentaje = 0;
   public finalizado = false;
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.tokenUser = this.getDecodedAccessToken(this.tokenInPage).userID;
     console.log(this.tokenUser);
+    this.userInfo = await this.festService.getUserInfo(this.tokenUser);
+    console.log(this.userInfo);
+    this.newDatas = new FormGroup({
+      name: new FormControl(this.userInfo.name, [
+        Validators.required
+      ]),
+      surname: new FormControl(this.userInfo.surname, [
+        Validators.required
+      ]),
+      phone_number: new FormControl(this.userInfo.phone_number, [
+        Validators.required
+      ]),
+      email: new FormControl(this.userInfo.email, [
+        Validators.pattern(/^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/),
+        Validators.required
+      ]),
+      username: new FormControl(this.userInfo.username, [
+        Validators.required
+      ])
+    })
   }
   getDecodedAccessToken(token: string): any {
     try {
@@ -100,5 +123,29 @@ export class UserComponent implements OnInit {
           console.log(err);
         })
     });
+  };
+
+  updateUser() {
+    console.log(this.newDatas.value)
+    this.festService.updateUserInfo(this.newDatas.value, this.tokenUser)
+      .then(res => {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Profile updated'
+        })
+      })
+
   }
 }

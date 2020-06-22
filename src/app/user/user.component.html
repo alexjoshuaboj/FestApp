@@ -1,27 +1,130 @@
-<div class="contenedor">
-  <div class="contenedor_formulario">
-    <h1 class="is-size-1">Subir archivos a Cloud Storage</h1>
-    <p class="download" *ngIf="finalizado">URL de descarga: <a href="{{ URLPublica }}" target="_blank">Descargar</a></p>
-    <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
-      <div class="file has-name is-boxed">
-        <label class="file-label">
-          <input class="file-input" type="file" formControlName="archivo" (change)="cambioArchivo($event)">
-          <span class="file-cta">
-            <span class="file-label">
-              Elegir un archivo…
-            </span>
-          </span>
-          <span class="file-name">
-            {{ mensajeArchivo }}
-          </span>
-        </label>
-      </div>
-      <hr>
-      <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success" value="{{porcentaje}}"
-        max="100">{{porcentaje}}%</progress>
-      <button
-        [ngClass]="{'button': true, 'is-success': true, 'is-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}"
-        [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100)">Subir archivo</button>
-    </form>
+<div class="container p-5">
+  <div class="row">
+    <div class="col-sm-10">
+      <h1>{{userInfo.name}}</h1>
+    </div>
+
   </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <!--left col-->
+
+
+      <div class="text-center">
+        <img [src]="userInfo.imagen" class="avatar img-circle img-thumbnail mb-2" alt="avatar">
+        <div class="contenedor_formulario">
+
+          <p class="download" *ngIf="finalizado">Subida
+          </p>
+          <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+            <div class="file has-name is-boxed">
+              <label class="file-label">
+                <input class="file-input" type="file" formControlName="archivo" (change)="cambioArchivo($event)">
+                <span class="file-cta">
+                  <span class="file-label">
+                    Elegir un archivo…
+                  </span>
+                </span>
+                <span class="file-name">
+                  {{ mensajeArchivo }}
+                </span>
+              </label>
+            </div>
+            <hr>
+            <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
+              value="{{porcentaje}}" max="100">{{porcentaje}}%</progress>
+            <button class="btn btn-primary"
+              [ngClass]="{'button': true, 'is-success': true, 'is-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}"
+              [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100)">Subir imagen</button>
+          </form>
+        </div>
+      </div><br>
+
+
+    </div>
+    <div class="col-sm-3"></div>
+    <!--/col-3-->
+    <div class="col-sm-6">
+
+
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="home">
+          <hr>
+          <form [formGroup]="newDatas">
+            <div class="form-group">
+
+              <div class="col-xs-6">
+                <label for="first_name">
+                  <h4>First name</h4>
+                </label>
+                <input type="text" class="form-control" name="name" formControlName="name"
+                  title="Enter your first name">
+              </div>
+            </div>
+            <div class="form-group">
+
+              <div class="col-xs-6">
+                <label for="last_name">
+                  <h4>Last name</h4>
+                </label>
+                <input type="text" class="form-control" name="surname" formControlName="surname"
+                  title="Enter your last name">
+              </div>
+            </div>
+
+            <div class="form-group">
+
+              <div class="col-xs-6">
+                <label for="phone">
+                  <h4>Phone</h4>
+                </label>
+                <input type="text" class="form-control" name="phone_number" formControlName="phone_number"
+                  title="Enter your phone number">
+              </div>
+            </div>
+
+            <div class="form-group">
+
+              <div class="col-xs-6">
+                <label for="email">
+                  <h4>Email</h4>
+                </label>
+                <input type="email" class="form-control" name="email" formControlName="email" title="enter your email.">
+              </div>
+            </div>
+            <div class="form-group">
+
+              <div class="col-xs-6">
+                <label for="username">
+                  <h4>Username</h4>
+                </label>
+                <input type="email" class="form-control" formControlName="username" title="enter a username">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-xs-12">
+                <br>
+                <button class="btn btn-lg btn-success" type="submit" [disabled]="!newDatas.valid"
+                  (click)="updateUser()"><i class="glyphicon glyphicon-ok-sign"></i>
+                  Save</button>
+              </div>
+            </div>
+          </form>
+
+          <hr>
+
+        </div>
+
+
+
+      </div>
+      <!--/tab-pane-->
+    </div>
+    <!--/tab-content-->
+
+  </div>
+  <!--/col-9-->
+
 </div>

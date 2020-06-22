@@ -76,6 +76,15 @@ export class FestService {
       userFest: parseInt(localStorage.getItem('id_fest_user')),
       bandFest: idBand
     }).toPromise();
+  };
+
+  getUserInfo(idUser) {
+    return this.httpClient.get(`http://localhost:3000/users/getUser/${idUser}`).toPromise();
+  };
+
+  updateUserInfo(form, idUser) {
+    console.log(form, idUser);
+    return this.httpClient.post(`http://localhost:3000/users/updateUser/${idUser}`, form).toPromise();
   }
   /* 
     redirectOauthSpotify(): Promise<any> {
