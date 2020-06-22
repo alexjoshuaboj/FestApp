@@ -61,6 +61,13 @@ export class FestService {
 
   getBands(idFest) {
     return this.httpClient.get(`http://localhost:3000/fests/${idFest}/bands`).toPromise();
+  };
+
+  updatePhoto(idUser, urlPhoto) {
+    return this.httpClient.post('http://localhost:3000/users/updatePhoto', {
+      id: idUser,
+      url: urlPhoto
+    }).toPromise();
   }
 
 

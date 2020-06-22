@@ -8,6 +8,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from '../environments/environment';
 
 
 
@@ -45,7 +48,9 @@ import { UserComponent } from './user/user.component';
     SweetAlert2Module,
     MatInputModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
