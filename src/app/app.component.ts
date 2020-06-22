@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
-    this.route.navigate(['/login'])
+    this.route.navigate(['/login']);
+    localStorage.removeItem('token_user');
 
     const Toast = Swal.mixin({
       toast: true,
