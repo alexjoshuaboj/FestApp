@@ -1,4 +1,4 @@
-<div class="container p-5 mt-5">
+<!-- <div class="container p-5 mt-5">
 
 
   <mat-grid-list cols="4" rowHeight="150px">
@@ -22,16 +22,33 @@
     </tbody>
   </table>
 
-  <!-- <div>
-    <div class="d-flex justify-content-between">
-      <div *ngFor="let banda of bandas" class="col-3">
-        <div>
-          <img [src]="banda.img" alt="">
-        </div>
-
-      </div>
-    </div>
-
-  </div> -->
 
 </div>
+ -->
+
+<div class="container example-container">
+  <h2>To do</h2>
+
+  <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="bandas" [cdkDropListConnectedTo]="[doneList]"
+    class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let band of bandas" cdkDrag>{{band.nombre}}</div>
+  </div>
+</div>
+
+<!-- <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <div class="example-box" *ngFor="let band of bandas" cdkDrag>
+    {{band.nombre}}
+    <img *cdkDragPreview [src]="band.img" [alt]="band.nombre">
+  </div>
+</div> -->
+
+<div class="example-container">
+  <h2>Done</h2>
+
+  <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+    class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let dones of done" cdkDrag>{{dones.nombre}}</div>
+  </div>
+</div>
+
+<button class="sendrequest btn btn-primary" (click)="sendBands()">Save in your perfile</button>

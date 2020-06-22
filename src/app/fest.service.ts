@@ -9,11 +9,12 @@ export class FestService {
 
   private registerURL: string;
   private loginURL: string;
-
+  private baseURL: string;
 
   constructor(private httpClient: HttpClient) {
     this.registerURL = "http://localhost:3000/users/register";
     this.loginURL = "http://localhost:3000/users/login";
+    this.baseURL = "http://localhost:3000/";
   }
 
   postRegister(body): Promise<any> {
@@ -63,5 +64,15 @@ export class FestService {
     return this.httpClient.get(`http://localhost:3000/fests/${idFest}/bands`).toPromise();
   }
 
+  selectBands(idBand) {
+    return this.httpClient.post('http://localhost:3000/fests/newBands', {
+      userFest: parseInt(localStorage.getItem('id_fest_user')),
+      bandFest: idBand
+    }).toPromise();
+  }
+  /* 
+    redirectOauthSpotify(): Promise<any> {
+      return this.httpClient.get(this.baseURL + `auth/spotify`).toPromise();
+    } */
 
 }
