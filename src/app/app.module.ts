@@ -8,7 +8,13 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
+<<<<<<< HEAD
 import { DragDropModule } from '@angular/cdk/drag-drop';
+=======
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from '../environments/environment';
+>>>>>>> 4d27c0c7eae49bc9aefdc9ef7151e4f769615c27
 
 
 
@@ -47,7 +53,12 @@ import { UserComponent } from './user/user.component';
     MatInputModule,
     MatButtonModule,
     MatGridListModule,
+<<<<<<< HEAD
     DragDropModule
+=======
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
+>>>>>>> 4d27c0c7eae49bc9aefdc9ef7151e4f769615c27
   ],
   providers: [],
   bootstrap: [AppComponent]

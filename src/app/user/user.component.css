@@ -1,8 +1,36 @@
-.imglogo{
-    width: 30px;
+.imglogo {
+  width: 30px;
 }
 
-.listado{
-    display: flex;
-    
+.listado {
+  display: flex;
+
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+}
+
+.contenedor_formulario {
+  width: 400px;
+}
+
+.download {
+  background: #1081ff;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+
+}
+
+;
+
+.download a {
+  text-decoration: underline;
+  color: #FFFFFF;
 }
