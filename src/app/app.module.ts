@@ -8,13 +8,10 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
-<<<<<<< HEAD
-import { DragDropModule } from '@angular/cdk/drag-drop';
-=======
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { environment } from '../environments/environment';
->>>>>>> 4d27c0c7eae49bc9aefdc9ef7151e4f769615c27
 
 
 
@@ -25,10 +22,9 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ChooseFestivalComponent } from './choose-festival/choose-festival.component';
 import { ChooseArtistComponent } from './choose-artist/choose-artist.component';
-import { ChatComponent } from './chat/chat.component';
-import { AlgoritmHoursComponent } from './algoritm-hours/algoritm-hours.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserComponent } from './user/user.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -36,9 +32,8 @@ import { UserComponent } from './user/user.component';
     LoginComponent,
     ChooseFestivalComponent,
     ChooseArtistComponent,
-    ChatComponent,
-    AlgoritmHoursComponent,
-    UserComponent
+    UserComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -53,12 +48,9 @@ import { UserComponent } from './user/user.component';
     MatInputModule,
     MatButtonModule,
     MatGridListModule,
-<<<<<<< HEAD
-    DragDropModule
-=======
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule
->>>>>>> 4d27c0c7eae49bc9aefdc9ef7151e4f769615c27
+    AngularFireStorageModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
