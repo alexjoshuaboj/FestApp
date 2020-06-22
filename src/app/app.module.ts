@@ -12,7 +12,10 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { environment } from '../environments/environment';
-
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlatpickrModule } from 'angularx-flatpickr';
 
 
 
@@ -50,7 +53,13 @@ import { HomeComponent } from './home/home.component';
     MatGridListModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
-    DragDropModule
+    DragDropModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+    NgbModalModule,
+    FlatpickrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
