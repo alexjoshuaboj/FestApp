@@ -1,0 +1,19 @@
+<div class="container p-5 mt-5">
+  <div class="row justify-content-between">
+    <div class="col-3">
+      <div id="selectFestival">
+        <mat-form-field class="ml-2">
+          <mat-label>Selecciona un festival</mat-label>
+          <mat-select (selectionChange)="selectFestival($event)">
+            <mat-option *ngFor="let fest of festsUser" [value]="fest.id">
+              {{fest.nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-8">
+      <app-bands-in-fest [idFestBands]="idFest"></app-bands-in-fest>
+    </div>
+  </div>
+</div>

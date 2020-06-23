@@ -12,6 +12,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { environment } from '../environments/environment';
+import { MatSelectModule } from '@angular/material/select';
+
 
 
 
@@ -25,6 +27,9 @@ import { ChooseArtistComponent } from './choose-artist/choose-artist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home/home.component';
+import { FestivalSettingsComponent } from './festival-settings/festival-settings.component';
+import { BandsInFestComponent } from './bands-in-fest/bands-in-fest.component';
+import { NewBandsFestComponent } from './new-bands-fest/new-bands-fest.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,10 @@ import { HomeComponent } from './home/home.component';
     ChooseFestivalComponent,
     ChooseArtistComponent,
     UserComponent,
-    HomeComponent
+    HomeComponent,
+    FestivalSettingsComponent,
+    BandsInFestComponent,
+    NewBandsFestComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +58,8 @@ import { HomeComponent } from './home/home.component';
     MatGridListModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
-    DragDropModule
+    DragDropModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

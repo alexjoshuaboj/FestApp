@@ -8,6 +8,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  title(title: any) {
+    throw new Error("Method not implemented.");
+  }
 
   constructor(public route: Router, public activatedRoute: ActivatedRoute) {
 
