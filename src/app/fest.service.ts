@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { pid } from 'process';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class FestService {
-
+  idFest: any;
   private registerURL: string;
   private loginURL: string;
   private baseURL: string;
@@ -101,6 +102,14 @@ export class FestService {
 
   addArtistFestival(pForm) {
     return this.httpClient.post('http://localhost:3000/fests/addArtistFest', pForm).toPromise();
+  };
+
+  setIdFest(pIdFest) {
+    this.idFest = pIdFest;
+  };
+
+  getIdFest() {
+    return this.idFest;
   }
   /* 
     redirectOauthSpotify(): Promise<any> {

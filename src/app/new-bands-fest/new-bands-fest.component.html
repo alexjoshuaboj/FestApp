@@ -17,14 +17,16 @@
       <button data-toggle="modal" data-target="#exampleModal" class="btn btn-success">Añadir artista</button>
     </div>
     <div class="col-7">
-      <form class="formArtistFestival" [formGroup]="formArtistFestival">
+      <form class="formArtistFestival" [formGroup]="formArtistFestival" (ngSubmit)="addArtistFestival()">
         <div class="form-group">
-          <label for="">Inicio</label>
-          <input class="form-control" formControlName="inicio" type="datetime">
+          <h4>Inicio</h4>
+          <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time" formControlName="inicio">
+          <owl-date-time #dt1></owl-date-time>
         </div>
         <div class="form-group">
-          <label for="">Fin</label>
-          <input class="form-control" formControlName="fin" type="datetime">
+          <h4>Fin</h4>
+          <input [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="Date Time" formControlName="fin">
+          <owl-date-time #dt2></owl-date-time>
         </div>
         <button type="submit" class="btn btn-success">Añadir</button>
       </form>

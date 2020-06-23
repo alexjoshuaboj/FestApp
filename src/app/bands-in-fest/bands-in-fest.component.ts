@@ -18,6 +18,11 @@ export class BandsInFestComponent implements OnChanges {
     console.log(this.bandsInFest);
 
 
+
+  }
+
+  onClick() {
+    this.festService.setIdFest(this.idFestBands);
   }
 
 }

@@ -10,12 +10,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./new-bands-fest.component.css']
 })
 export class NewBandsFestComponent implements OnInit {
-  @Input() idFest: any;
+  idFest: any;
   allArtist: any;
   artistSearched: any;
   formArtist: FormGroup;
   formArtistFestival: FormGroup;
   constructor(private festService: FestService, private firebaseStorage: FirebaseStorageService) {
+    this.idFest = this.festService.getIdFest();
     this.formArtist = new FormGroup({
       nombre: new FormControl('', [
         Validators.required
@@ -25,8 +26,7 @@ export class NewBandsFestComponent implements OnInit {
       ])
     });
     this.formArtistFestival = new FormGroup({
-      idFest: new FormControl(this.idFest),
-      idArtist: new FormControl(this.artistSearched),
+
       inicio: new FormControl('', [
         Validators.required
       ]),
@@ -91,6 +91,10 @@ export class NewBandsFestComponent implements OnInit {
   };
 
   async addArtistFestival() {
+    this.formArtistFestival.value.idFest = this.idFest;
+    this.formArtistFestival.value.idArtist = this.artistSearched;
     const result = await this.festService.addArtistFestival(this.formArtistFestival.value);
+    console.log(this.formArtistFestival.value);
+    console.log(result);
   }
 }

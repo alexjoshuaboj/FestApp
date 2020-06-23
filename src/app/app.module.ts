@@ -13,7 +13,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { environment } from '../environments/environment';
 import { MatSelectModule } from '@angular/material/select';
-
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 
 
@@ -59,7 +59,7 @@ import { NewBandsFestComponent } from './new-bands-fest/new-bands-fest.component
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     DragDropModule,
-    MatSelectModule
+    MatSelectModule, OwlDateTimeModule, OwlNativeDateTimeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
