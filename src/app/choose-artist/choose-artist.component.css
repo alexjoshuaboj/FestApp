@@ -71,3 +71,7 @@ img {
   background: linear-gradient(to left, #6B2937, #A63041);
   border: none;
 }
+
+.imgdrag{
+  max-width: 200px;
+}

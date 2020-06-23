@@ -1,3 +1,24 @@
+<script>
+  window.fbAsyncInit = function () {
+    FB.init({
+      appId: '1115581165484044',
+      cookie: true,
+      xfbml: true,
+      version: '7.0'
+    });
+
+    FB.AppEvents.logPageView();
+
+  };
+
+  (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) { return; }
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
 <div class="container p-5">
   <div class="row d-flex justify-content-center mt-5">
     <div class="col-xl-6 col-md-8 col-sm-10">
