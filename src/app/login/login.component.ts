@@ -68,23 +68,26 @@ export class LoginComponent implements OnInit {
         if (res) {
           let caca: Object = res;
           this.festService.setToken(caca['token']);
-          this.router.navigate(['/choose-fest']);
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            onOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-          })
+          if (caca['token']) {
+            this.router.navigate(['/choose-fest']);
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              onOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
 
-          Toast.fire({
-            icon: 'success',
-            title: 'Loggin successfully'
-          })
+            Toast.fire({
+              icon: 'success',
+              title: 'Loggin successfully'
+            })
+          }
+
         }
       })
       .catch(err => console.log(err));
