@@ -25,30 +25,34 @@
 
 </div>
  -->
+<div class="container mt-5">
+  <div class="container example-container">
+    <h2>Fests</h2>
 
-<div class="container example-container">
-  <h2>To do</h2>
-
-  <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="bandas" [cdkDropListConnectedTo]="[doneList]"
-    class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let band of bandas" cdkDrag>{{band.nombre}}</div>
+    <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="bandas" [cdkDropListConnectedTo]="[doneList]"
+      class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let band of bandas" cdkDrag>{{band.nombre}} <img class="imgdrag"
+          [src]="band.img">
+      </div>
+    </div>
   </div>
+
+  <!--  <div cdkDropList #todoList="cdkDropList" class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let band of bandas" cdkDrag>
+      {{band.nombre}}
+      <img class="imgdrag" *cdkDragPreview [src]="band.img" [alt]="band.nombre">
+    </div>
+  </div> -->
+
+  <div class="example-container">
+    <h2>Your fests</h2>
+
+    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+      class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let dones of done" cdkDrag>{{dones.nombre}} <img class="imgdrag"
+          [src]="dones.img"></div>
+    </div>
+  </div>
+
+  <button class="sendrequest btn btn-primary" (click)="sendBands()">Save in your perfile</button>
 </div>
-
-<!-- <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  <div class="example-box" *ngFor="let band of bandas" cdkDrag>
-    {{band.nombre}}
-    <img *cdkDragPreview [src]="band.img" [alt]="band.nombre">
-  </div>
-</div> -->
-
-<div class="example-container">
-  <h2>Done</h2>
-
-  <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
-    class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let dones of done" cdkDrag>{{dones.nombre}}</div>
-  </div>
-</div>
-
-<button class="sendrequest btn btn-primary" (click)="sendBands()">Save in your perfile</button>

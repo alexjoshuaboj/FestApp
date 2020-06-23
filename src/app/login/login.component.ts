@@ -5,6 +5,11 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import * as jwt_decode from "jwt-decode";
 
+//login with facebook
+import { SocialAuthService } from "angularx-social-login";
+import { FacebookLoginProvider } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
+
 
 
 
@@ -15,15 +20,23 @@ import * as jwt_decode from "jwt-decode";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   formUser: FormGroup;
   formRegister: FormGroup;
+<<<<<<< HEAD
   role: any;
   idUser: any;
 
+=======
+  user: SocialUser;
+  loggedIn: boolean;
+>>>>>>> 23eb14310a5335e318da7c857d380cf52794deeb
 
   constructor(
     private festService: FestService,
-    private router: Router) {
+    private router: Router,
+    private authService: SocialAuthService
+  ) {
     //User Login
     this.formUser = new FormGroup({
       email: new FormControl('', [
@@ -62,7 +75,10 @@ export class LoginComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    await this.authService.authState.subscribe((user) => {
+      this.user = user;
+    });
   }
 
   onClick() {
@@ -123,12 +139,12 @@ export class LoginComponent implements OnInit {
     }
   };
 
-  /*   authSpotify() {
-      this.festService.redirectOauthSpotify()
-        .then(res => {
-          console.log(res);
-        })
-        .catch(err => console.log(err));
-    } */
+  signInWithFB() {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID)
+      .then(res => { console.log(res); })
+      .catch(err => {
+        console.log(err);
+      })
+  }
 
 }

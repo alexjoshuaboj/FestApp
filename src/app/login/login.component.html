@@ -45,7 +45,7 @@
       </form>
       <div class="d-flex justify-content-center">
         <!-- REGISTRO CON FACEBOOK -->
-        <a href="http://localhost:3000/auth/facebook"><img class="facebookButton"
+        <a class="facebook" (click)="signInWithFB()"><img class="facebookButton"
             src="../../assets/img/facebookButton.png"></a>
 
         <!-- REGISTRO CON SPOTIFY -->
@@ -101,8 +101,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="register()">Save
-                changes</button>
+              <button type="button" class="btn btn-primary" (click)="register()">Save changes</button>
             </div>
           </div>
         </div>

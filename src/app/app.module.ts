@@ -20,6 +20,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 
+//social 
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { FacebookLoginProvider } from 'angularx-social-login';
+
 
 
 
@@ -68,10 +72,26 @@ import { NewBandsFestComponent } from './new-bands-fest/new-bands-fest.component
       useFactory: adapterFactory,
     }),
     NgbModalModule,
-    FlatpickrModule.forRoot()
-    MatSelectModule, OwlDateTimeModule, OwlNativeDateTimeModule
+    FlatpickrModule.forRoot(),
+    MatSelectModule, OwlDateTimeModule, OwlNativeDateTimeModule,
+    FlatpickrModule.forRoot(),
+    SocialLoginModule,
+
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider("296886378029394"),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
