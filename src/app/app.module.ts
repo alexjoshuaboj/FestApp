@@ -17,6 +17,10 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
 
+//social 
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { FacebookLoginProvider } from 'angularx-social-login';
+
 
 
 
@@ -59,9 +63,24 @@ import { HomeComponent } from './home/home.component';
       useFactory: adapterFactory,
     }),
     NgbModalModule,
-    FlatpickrModule.forRoot()
+    FlatpickrModule.forRoot(),
+    SocialLoginModule,
+
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider("296886378029394"),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

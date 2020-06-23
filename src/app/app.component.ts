@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { SocialAuthService } from 'angularx-social-login';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,11 @@ import Swal from 'sweetalert2';
 })
 export class AppComponent implements OnInit {
 
-  constructor(public route: Router, public activatedRoute: ActivatedRoute) {
+  constructor(
+    public route: Router,
+    public activatedRoute: ActivatedRoute,
+    private authService: SocialAuthService
+  ) {
 
   };
 
@@ -38,6 +43,8 @@ export class AppComponent implements OnInit {
       icon: 'success',
       title: 'Logout done!'
     })
+
+    this.authService.signOut();
 
 
   }
