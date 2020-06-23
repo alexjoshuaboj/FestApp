@@ -22,7 +22,6 @@ export class LoginGuardGuard implements CanActivate {
     let time;
     if (this.token !== null) {
       this.tokenDes = this.getDecodedAccessToken(this.token);
-      console.log(this.tokenDes);
       time = this.tokenDes.expireDATE - this.tokenDes.createDATE;
     } else {
       this.router.navigate(['/'])

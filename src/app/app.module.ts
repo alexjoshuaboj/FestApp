@@ -16,6 +16,9 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
+import { MatSelectModule } from '@angular/material/select';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+
 
 
 
@@ -28,6 +31,9 @@ import { ChooseArtistComponent } from './choose-artist/choose-artist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home/home.component';
+import { FestivalSettingsComponent } from './festival-settings/festival-settings.component';
+import { BandsInFestComponent } from './bands-in-fest/bands-in-fest.component';
+import { NewBandsFestComponent } from './new-bands-fest/new-bands-fest.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +42,10 @@ import { HomeComponent } from './home/home.component';
     ChooseFestivalComponent,
     ChooseArtistComponent,
     UserComponent,
-    HomeComponent
+    HomeComponent,
+    FestivalSettingsComponent,
+    BandsInFestComponent,
+    NewBandsFestComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +69,7 @@ import { HomeComponent } from './home/home.component';
     }),
     NgbModalModule,
     FlatpickrModule.forRoot()
+    MatSelectModule, OwlDateTimeModule, OwlNativeDateTimeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

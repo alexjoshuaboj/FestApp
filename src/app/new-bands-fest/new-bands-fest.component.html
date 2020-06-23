@@ -1,0 +1,96 @@
+<div class="container p-5 mt-5">
+  <div class="row">
+    <div class="col-4">
+      <div id="searchArtist">
+        <mat-form-field>
+          <mat-label>Select an artist</mat-label>
+          <mat-select [(value)]="artistSearched">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let artist of allArtist" [value]="artist.id">{{artist.nombre}}</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+
+      <button data-toggle="modal" data-target="#exampleModal" class="btn btn-success">Añadir artista</button>
+    </div>
+    <div class="col-7">
+      <form class="formArtistFestival" [formGroup]="formArtistFestival" (ngSubmit)="addArtistFestival()">
+        <div class="form-group">
+          <h4>Inicio</h4>
+          <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time" formControlName="inicio">
+          <owl-date-time #dt1></owl-date-time>
+        </div>
+        <div class="form-group">
+          <h4>Fin</h4>
+          <input [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="Date Time" formControlName="fin">
+          <owl-date-time #dt2></owl-date-time>
+        </div>
+        <button type="submit" class="btn btn-success">Añadir</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Artist in Database
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- FORMULARIO MODAL PARA AÑADIR ARTISTA -->
+      <div class="modal-body">
+        <form class="formArtist" [formGroup]="formArtist">
+          <mat-form-field class="form">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" name="nombre" formControlName="nombre">
+          </mat-form-field><br>
+          <mat-form-field class="form">
+            <mat-label>ID Spotify</mat-label>
+            <input matInput type="text" name="spotify_id" formControlName="spotify_id">
+          </mat-form-field>
+          <div class="contenedor_formulario">
+
+            <p class="download" *ngIf="finalizado">Subida
+            </p>
+            <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+              <div class="file has-name is-boxed">
+                <label class="file-label">
+                  <input class="file-input" type="file" formControlName="archivo" (change)="cambioArchivo($event)">
+                  <span class="file-cta">
+                    <span class="file-label">
+                      Elegir un archivo…
+                    </span>
+                  </span>
+                  <span class="file-name">
+                    {{ mensajeArchivo }}
+                  </span>
+                </label>
+              </div>
+              <hr>
+              <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
+                value="{{porcentaje}}" max="100">{{porcentaje}}%</progress>
+              <button class="btn btn-primary"
+                [ngClass]="{'button': true, 'is-success': true, 'is-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}"
+                [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100)">Subir imagen</button>
+            </form>
+          </div>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addArtist()">Save
+          changes</button>
+      </div>
+    </div>
+  </div>
+</div>
