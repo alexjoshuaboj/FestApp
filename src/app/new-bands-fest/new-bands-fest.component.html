@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-4">
       <div id="searchArtist">
-        <mat-form-field>
+        <h3>Select an artist</h3>
+        <mat-form-field class="ml-3">
           <mat-label>Select an artist</mat-label>
           <mat-select [(value)]="artistSearched">
             <mat-option>None</mat-option>
@@ -13,10 +14,14 @@
       </div>
 
 
+      <div id="searchArtist" class="mt-3">
+        <h3>Create a new artist </h3>
+        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-success mt-2 ml-3 mb-3">Create
+          artist</button>
+      </div>
 
-      <button data-toggle="modal" data-target="#exampleModal" class="btn btn-success">Añadir artista</button>
     </div>
-    <div class="col-7">
+    <div id="searchArtist" class="col-7">
       <form class="formArtistFestival" [formGroup]="formArtistFestival" (ngSubmit)="addArtistFestival()">
         <div class="form-group">
           <h4>Inicio</h4>

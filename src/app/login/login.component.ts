@@ -23,14 +23,11 @@ export class LoginComponent implements OnInit {
 
   formUser: FormGroup;
   formRegister: FormGroup;
-<<<<<<< HEAD
   role: any;
   idUser: any;
 
-=======
   user: SocialUser;
   loggedIn: boolean;
->>>>>>> 23eb14310a5335e318da7c857d380cf52794deeb
 
   constructor(
     private festService: FestService,
