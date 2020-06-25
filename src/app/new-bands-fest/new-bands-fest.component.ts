@@ -3,6 +3,7 @@ import { FestService } from '../fest.service';
 
 import { FirebaseStorageService } from '../firebase-storage.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-bands-fest',
@@ -95,6 +96,23 @@ export class NewBandsFestComponent implements OnInit {
     this.formArtistFestival.value.idArtist = this.artistSearched;
     const result = await this.festService.addArtistFestival(this.formArtistFestival.value);
     console.log(this.formArtistFestival.value);
-    console.log(result);
+    if (result['affectedRows'] === 1) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: 'success',
+        title: 'Done'
+      })
+    }
   }
 }

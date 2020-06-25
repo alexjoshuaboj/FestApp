@@ -88,7 +88,7 @@ export class LoginComponent implements OnInit {
           this.idUser = this.getDecodedAccessToken(caca['token']).userID;
           console.log('Role', this.role);
           if (this.role === null) {
-            this.router.navigate(['/choose-fest']);
+            this.router.navigate(['/home']);
             const Toast = Swal.mixin({
               toast: true,
               position: 'top-end',
