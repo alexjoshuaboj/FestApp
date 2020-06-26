@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { pid } from 'process';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class FestService {
-
+  idFest: any;
   private registerURL: string;
   private loginURL: string;
   private baseURL: string;
@@ -87,6 +88,30 @@ export class FestService {
   updateUserInfo(form, idUser) {
     console.log(form, idUser);
     return this.httpClient.post(`http://localhost:3000/users/updateUser/${idUser}`, form).toPromise();
+  };
+
+  getUserFestival(idUser) {
+    return this.httpClient.get(`http://localhost:3000/fests/getUserFestivals/${idUser}`).toPromise();
+  };
+
+  getAllArtist() {
+    return this.httpClient.get('http://localhost:3000/fests/getArtist').toPromise();
+  };
+
+  addArtist(pData) {
+    return this.httpClient.post('http://localhost:3000/fests/addArtist', pData).toPromise();
+  };
+
+  addArtistFestival(pForm) {
+    return this.httpClient.post('http://localhost:3000/fests/addArtistFest', pForm).toPromise();
+  };
+
+  setIdFest(pIdFest) {
+    this.idFest = pIdFest;
+  };
+
+  getIdFest() {
+    return this.idFest;
   }
 
 }

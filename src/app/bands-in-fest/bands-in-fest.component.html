@@ -1,0 +1,16 @@
+<div id="listBands">
+  <div class="d-flex align-content-center">
+    <button class="mt-1 ml-2 btn btn-success" (click)="onClick()" [routerLink]="['/addArtist']">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <mat-list>
+    <mat-list-item *ngFor="let band of bandsInFest">
+      <img matListAvatar [src]="band.img" alt="...">
+      <h3 matLine> {{band.nombre}} </h3>
+      <p matLine>
+        <span> ID Spotify: {{band.spotify_id}} </span>
+      </p>
+    </mat-list-item>
+  </mat-list>
+</div>

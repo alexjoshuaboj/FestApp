@@ -18,19 +18,9 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatSelectModule } from '@angular/material/select';
+/* import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime'; */
 
-//fontawesome
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
-//fullcalendar
-import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
-import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
-import interactionPlugin from '@fullcalendar/interaction'; // a plugin
-
-FullCalendarModule.registerPlugins([ // register FullCalendar plugins
-  dayGridPlugin,
-  interactionPlugin
-]);
 
 //social 
 /* import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
@@ -47,7 +37,9 @@ import { ChooseArtistComponent } from './choose-artist/choose-artist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home/home.component';
-import { ChatBotComponent } from './chat-bot/chat-bot.component';
+import { FestivalSettingsComponent } from './festival-settings/festival-settings.component';
+import { BandsInFestComponent } from './bands-in-fest/bands-in-fest.component';
+import { NewBandsFestComponent } from './new-bands-fest/new-bands-fest.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +49,9 @@ import { ChatBotComponent } from './chat-bot/chat-bot.component';
     ChooseArtistComponent,
     UserComponent,
     HomeComponent,
-    ChatBotComponent
+    FestivalSettingsComponent,
+    BandsInFestComponent,
+    NewBandsFestComponent
   ],
   imports: [
     BrowserModule,
@@ -76,14 +70,17 @@ import { ChatBotComponent } from './chat-bot/chat-bot.component';
     AngularFireStorageModule,
     DragDropModule,
     /* SocialLoginModule, */
-    FullCalendarModule, // register FullCalendar with you app
-    FontAwesomeModule,
     NgbModalModule,
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    MatSelectModule, /* OwlDateTimeModule, OwlNativeDateTimeModule, */
+    FlatpickrModule.forRoot(),
+
 
   ],
   providers: [

@@ -3,9 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FestService } from '../fest.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import * as jwt_decode from "jwt-decode";
 import { HttpClient } from '@angular/common/http';
-
 
 //login with facebook
 /* import { SocialAuthService } from "angularx-social-login";
@@ -23,12 +22,11 @@ import { SocialUser } from "angularx-social-login";
 })
 export class LoginComponent implements OnInit {
 
-  faCoffee = faCoffee;
-
   formUser: FormGroup;
   formRegister: FormGroup;
-  /*   user: SocialUser;
-    loggedIn: boolean; */
+  role: any;
+  idUser: any;
+
 
   constructor(
     private festService: FestService,
@@ -83,8 +81,11 @@ export class LoginComponent implements OnInit {
         if (res) {
           let caca: Object = res;
           this.festService.setToken(caca['token']);
-          if (caca['token']) {
-            this.router.navigate(['/choose-fest']);
+          this.role = this.getDecodedAccessToken(caca['token']).role;
+          this.idUser = this.getDecodedAccessToken(caca['token']).userID;
+          console.log('Role', this.role);
+          if (this.role === null) {
+            this.router.navigate(['/home']);
             const Toast = Swal.mixin({
               toast: true,
               position: 'top-end',
@@ -101,6 +102,9 @@ export class LoginComponent implements OnInit {
               icon: 'success',
               title: 'Loggin successfully'
             })
+          } else if (this.role === 'ADMIN') {
+            localStorage.setItem('id_user', this.idUser);
+            this.router.navigate(['/festivalsettings']);
           }
 
         }
@@ -119,7 +123,15 @@ export class LoginComponent implements OnInit {
       })
       .catch(err => console.log(err));
     console.log(this.formRegister.value);
-  }
+  };
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    }
+    catch (Error) {
+      return null;
+    }
+  };
 
   async getSpotifyData() {
     const result = await this.festService.getUserAndTokenSpotify();

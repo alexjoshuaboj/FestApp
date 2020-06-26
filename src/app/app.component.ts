@@ -9,6 +9,9 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  title(title: any) {
+    throw new Error("Method not implemented.");
+  }
 
   faCoffee = faCoffee;
 
