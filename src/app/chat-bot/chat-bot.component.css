@@ -1,0 +1,15 @@
+p{
+
+    width: 300px;
+    color: white;
+}
+
+.container{
+    position: relative;
+}
+
+.bot{
+    position: absolute;
+    right: 500px;
+    bottom: 500px;
+}

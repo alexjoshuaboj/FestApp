@@ -3,12 +3,15 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FestService } from '../fest.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { HttpClient } from '@angular/common/http';
+
 
 //login with facebook
-import { SocialAuthService } from "angularx-social-login";
-import { FacebookLoginProvider } from "angularx-social-login";
+/* import { SocialAuthService } from "angularx-social-login";
+import { GoogleLoginProvider } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
-
+ */
 
 
 
@@ -20,15 +23,18 @@ import { SocialUser } from "angularx-social-login";
 })
 export class LoginComponent implements OnInit {
 
+  faCoffee = faCoffee;
+
   formUser: FormGroup;
   formRegister: FormGroup;
-  user: SocialUser;
-  loggedIn: boolean;
+  /*   user: SocialUser;
+    loggedIn: boolean; */
 
   constructor(
     private festService: FestService,
     private router: Router,
-    private authService: SocialAuthService
+    private httpclient: HttpClient
+    /* private authService: SocialAuthService */
   ) {
     //User Login
     this.formUser = new FormGroup({
@@ -69,9 +75,6 @@ export class LoginComponent implements OnInit {
   }
 
   async ngOnInit() {
-    await this.authService.authState.subscribe((user) => {
-      this.user = user;
-    });
   }
 
   onClick() {
@@ -118,12 +121,9 @@ export class LoginComponent implements OnInit {
     console.log(this.formRegister.value);
   }
 
-  signInWithFB() {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID)
-      .then(res => { console.log(res); })
-      .catch(err => {
-        console.log(err);
-      })
+  async getSpotifyData() {
+    const result = await this.festService.getUserAndTokenSpotify();
+    localStorage.setItem('token_user', result);
   }
 
 }

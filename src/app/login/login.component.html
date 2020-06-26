@@ -44,12 +44,8 @@
         </div>
       </form>
       <div class="d-flex justify-content-center">
-        <!-- REGISTRO CON FACEBOOK -->
-        <a class="facebook" (click)="signInWithFB()"><img class="facebookButton"
-            src="../../assets/img/facebookButton.png"></a>
-
         <!-- REGISTRO CON SPOTIFY -->
-        <a href="http://localhost:3000/auth/spotify"><img class="spotifyButton"
+        <a href="http://localhost:3000/auth/spotify" (click)="getSpotifyData()"><img class="spotifyButton"
             src="../../assets/img/spotifyButton.png"></a>
 
       </div>

@@ -1,4 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FestService } from '../fest.service';
+
+// angular calendar
+
+import {
+  ChangeDetectionStrategy,
+  ViewChild,
+  TemplateRef,
+} from '@angular/core';
 import {
   startOfDay,
   endOfDay,
@@ -39,6 +48,28 @@ const colors: any = {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  constructor(
+    private festservice: FestService,
+    private modal: NgbModal
+  ) {
+
+  }
+
+  ngOnInit(): void {
+  }
+
+  async getFestivales(): Promise<any> {
+    const result = await this.festservice.getFest();
+
+  }
+
+  getDataOnlineUser() {
+    const result = localStorage.getItem('token_user');
+    console.log(result);
+  }
+
+  //angular calendar functions 
 
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
@@ -116,12 +147,6 @@ export class HomeComponent implements OnInit {
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal) { }
-
-  ngOnInit(): void {
-  }
-
-
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
       if (
@@ -188,3 +213,7 @@ export class HomeComponent implements OnInit {
     this.activeDayIsOpen = false;
   }
 }
+
+
+
+

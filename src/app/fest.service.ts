@@ -14,7 +14,11 @@ export class FestService {
   constructor(private httpClient: HttpClient) {
     this.registerURL = "http://localhost:3000/users/register";
     this.loginURL = "http://localhost:3000/users/login";
-    this.baseURL = "http://localhost:3000/";
+    this.baseURL = "http://localhost:3000/sendUser";
+  }
+
+  getUserAndTokenSpotify(): Promise<any> {
+    return this.httpClient.get<any>(this.baseURL).toPromise();
   }
 
   postRegister(body): Promise<any> {
@@ -48,12 +52,10 @@ export class FestService {
 
 
   getFest() {
-
     return this.httpClient.get("http://localhost:3000/fests").toPromise();
   };
 
   selectFest(pFestId, pIdUser) {
-
     return this.httpClient.post('http://localhost:3000/fests/newfest', {
       "idUser": pIdUser,
       "idFestivales": pFestId
@@ -86,9 +88,5 @@ export class FestService {
     console.log(form, idUser);
     return this.httpClient.post(`http://localhost:3000/users/updateUser/${idUser}`, form).toPromise();
   }
-  /* 
-    redirectOauthSpotify(): Promise<any> {
-      return this.httpClient.get(this.baseURL + `auth/spotify`).toPromise();
-    } */
 
 }
