@@ -26,14 +26,9 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-<<<<<<< HEAD
-              "node_modules/@fullcalendar/daygrid/main.css",
-              "src/styles.css"
-=======
               "src/styles.css",
               "./node_modules/angular-calendar/css/angular-calendar.css",
               "node_modules/ng-pick-datetime/assets/style/picker.min.css"
->>>>>>> cee172b1ecf43bd8b09962637ac79ca8bac6d07c
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -42,10 +37,12 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [{
-                "replace": "src/environments/environment.ts",
-                "with": "src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -54,7 +51,8 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [{
+              "budgets": [
+                {
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"

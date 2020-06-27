@@ -19,7 +19,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatSelectModule } from '@angular/material/select';
-/* import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime'; */
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 
 //social 
@@ -78,7 +78,7 @@ import { NewBandsFestComponent } from './new-bands-fest/new-bands-fest.component
     }),
     NgbModalModule,
     FlatpickrModule.forRoot(),
-    MatSelectModule, /* OwlDateTimeModule, OwlNativeDateTimeModule, */
+    MatSelectModule, OwlDateTimeModule, OwlNativeDateTimeModule,
     FlatpickrModule.forRoot(),
 
 

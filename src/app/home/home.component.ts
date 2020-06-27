@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FestService } from '../fest.service';
+import * as jwt_decode from "jwt-decode";
 
 // angular calendar
 
@@ -49,26 +50,49 @@ const colors: any = {
 })
 export class HomeComponent implements OnInit {
 
+  idUser: string;
+
+
+
   constructor(
     private festservice: FestService,
     private modal: NgbModal
   ) {
+    this.idUser = "";
 
   }
 
-  ngOnInit(): void {
-  }
-
-  async getFestivales(): Promise<any> {
-    const result = await this.festservice.getFest();
-
-  }
-
-  getDataOnlineUser() {
-    const result = localStorage.getItem('token_user');
+  async ngOnInit() {
+    const result = await localStorage.getItem('token_user');
     console.log(result);
+    this.idUser = await this.getDecodedAccessToken(result).userID;
+    console.log(this.idUser);
+    const resultFests = await this.festservice.getUserFestival(parseInt(this.idUser));
+
+    console.log(resultFests[0].id);
+    console.log(resultFests);
+    const body = {
+      idUser: this.idUser,
+      idFest: resultFests[0].id
+    }
+    /*  const bandsHours = await this.festservice.getHoursBands(body); */
+
+
+
+
+    /* this.festservice.getHoursBands( */
   }
 
+
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    }
+    catch (Error) {
+      return null;
+    }
+  };
   //angular calendar functions 
 
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
@@ -105,44 +129,7 @@ export class HomeComponent implements OnInit {
   refresh: Subject<any> = new Subject();
 
   events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions,
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
+
   ];
 
   activeDayIsOpen: boolean = true;
@@ -214,6 +201,45 @@ export class HomeComponent implements OnInit {
   }
 }
 
-
+/**
+ *     {
+      start: subDays(startOfDay(new Date()), 1),
+      end: addDays(new Date(), 1),
+      title: 'A 3 day event',
+      color: colors.red,
+      actions: this.actions,
+      allDay: true,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true,
+      },
+      draggable: true,
+    },
+    {
+      start: startOfDay(new Date()),
+      title: 'An event with no end date',
+      color: colors.yellow,
+      actions: this.actions,
+    },
+    {
+      start: subDays(endOfMonth(new Date()), 3),
+      end: addDays(endOfMonth(new Date()), 3),
+      title: 'A long event that spans 2 months',
+      color: colors.blue,
+      allDay: true,
+    },
+    {
+      start: addHours(startOfDay(new Date()), 2),
+      end: addHours(new Date(), 2),
+      title: 'A draggable and resizable event',
+      color: colors.yellow,
+      actions: this.actions,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true,
+      },
+      draggable: true,
+    },
+ */
 
 

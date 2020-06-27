@@ -3,6 +3,11 @@ h3 {
 }
 
 pre {
+  background: rgba(255, 255, 255, 0.5);
   background-color: #f5f5f5;
   padding: 15px;
+}
+
+.container{
+  margin-top: 10px;
 }
