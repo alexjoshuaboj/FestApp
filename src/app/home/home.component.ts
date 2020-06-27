@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
 
   idUser: string;
 
-
+  bandsHours: any[];
 
   constructor(
     private festservice: FestService,
@@ -67,10 +67,24 @@ export class HomeComponent implements OnInit {
     console.log(result);
     this.idUser = await this.getDecodedAccessToken(result).userID;
     console.log(this.idUser);
-    const resultFests = await this.festservice.getUserFestival(parseInt(this.idUser));
+    const resultFests: any = await this.festservice.getUserFestival(parseInt(this.idUser));
 
+    for (let fest of resultFests) {
+
+
+<<<<<<< HEAD
 
     /*  const bandsHours = await this.festservice.getHoursBands(body); */
+=======
+      const result = await this.festservice.getHoursBands(this.idUser, fest.id);
+
+      console.log(result);
+      //ESTE RESULT DEVUELVE TODOS LOS HORARIOS FESTIVAL DEL USUARIO, PRUEBA CREANOD UN USUARIOS NUEVO Y AÑADIENDOLE FESTIVALES CON BANDAS. HAY POCAS RELACIONES DE FESTIVALES CON BANDAS QUE CONTENGAN HORARIOS, PARA HACER NUEVAS Y PROBAR, USA UN USUARIO DE ADMIN Y ASÍ AÑADES RELACIONES.
+    }
+
+
+    /*  const bandsHours =  */
+>>>>>>> 196d2e7d62f0163b699dfbfd36bab53b843057d9
 
 
 

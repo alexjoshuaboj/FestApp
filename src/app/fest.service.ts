@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { pid } from 'process';
 
 
 
@@ -115,8 +116,8 @@ export class FestService {
     return this.idFest;
   }
 
-  getHoursBands(body) {
-    return this.httpClient.get('http://localhost:3000/getHours', body).toPromise();
+  getHoursBands(pIdUser, pFest) {
+    return this.httpClient.get(`http://localhost:3000/fests/getHours/${pIdUser}/${pFest}`).toPromise();
   }
 
 }
