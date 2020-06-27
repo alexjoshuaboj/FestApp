@@ -69,12 +69,7 @@ export class HomeComponent implements OnInit {
     console.log(this.idUser);
     const resultFests = await this.festservice.getUserFestival(parseInt(this.idUser));
 
-    console.log(resultFests[0].id);
-    console.log(resultFests);
-    const body = {
-      idUser: this.idUser,
-      idFest: resultFests[0].id
-    }
+
     /*  const bandsHours = await this.festservice.getHoursBands(body); */
 
 
@@ -129,7 +124,12 @@ export class HomeComponent implements OnInit {
   refresh: Subject<any> = new Subject();
 
   events: CalendarEvent[] = [
-
+    {
+      start: startOfDay(new Date()),
+      title: 'An event with no end date',
+      color: colors.yellow,
+      actions: this.actions,
+    }
   ];
 
   activeDayIsOpen: boolean = true;
