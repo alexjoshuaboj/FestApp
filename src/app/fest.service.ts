@@ -120,4 +120,4 @@ export class FestService {
     return this.httpClient.get(`http://localhost:3000/fests/getHours/${pIdUser}/${pFest}`).toPromise();
   }
 
-}
+}     

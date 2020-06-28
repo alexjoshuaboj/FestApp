@@ -25,8 +25,9 @@ import {
   CalendarEvent,
   CalendarEventAction,
   CalendarEventTimesChangedEvent,
-  CalendarView,
+  CalendarView
 } from 'angular-calendar';
+import { DateAdapter } from '@angular/material/core';
 
 const colors: any = {
   red: {
@@ -43,6 +44,7 @@ const colors: any = {
   },
 };
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -51,48 +53,48 @@ const colors: any = {
 export class HomeComponent implements OnInit {
 
   idUser: string;
-
-  bandsHours: any[];
+  bandsHours: any;
 
   constructor(
     private festservice: FestService,
     private modal: NgbModal
   ) {
     this.idUser = "";
-
   }
 
   async ngOnInit() {
-    const result = await localStorage.getItem('token_user');
-    console.log(result);
-    this.idUser = await this.getDecodedAccessToken(result).userID;
-    console.log(this.idUser);
+    const resultToken = await localStorage.getItem('token_user');
+    this.idUser = await this.getDecodedAccessToken(resultToken).userID;
     const resultFests: any = await this.festservice.getUserFestival(parseInt(this.idUser));
+    //si no te los pinta avisa que a mi a veces no me los pinta y no entiendo porque 
+    for (let i of resultFests) {
+      const result: any = await this.festservice.getHoursBands(this.idUser, i.id);
+      /*       const fests = result.map((resultband) => {
+              {
+                resultband.inicio,
+                  resultband.fin,
+                  resultband.nombre
+              }
+            }) */
 
-    for (let fest of resultFests) {
+      for (let j of result) {
+        const fest =
+        {
+          end: new Date(j.fin),
+          start: new Date(j.inicio),
+          title: j.nombre
+        }
 
-
-<<<<<<< HEAD
-
-    /*  const bandsHours = await this.festservice.getHoursBands(body); */
-=======
-      const result = await this.festservice.getHoursBands(this.idUser, fest.id);
-
-      console.log(result);
+        return fest;
+      }
       //ESTE RESULT DEVUELVE TODOS LOS HORARIOS FESTIVAL DEL USUARIO, PRUEBA CREANOD UN USUARIOS NUEVO Y AÑADIENDOLE FESTIVALES CON BANDAS. HAY POCAS RELACIONES DE FESTIVALES CON BANDAS QUE CONTENGAN HORARIOS, PARA HACER NUEVAS Y PROBAR, USA UN USUARIO DE ADMIN Y ASÍ AÑADES RELACIONES.
     }
-
-
-    /*  const bandsHours =  */
->>>>>>> 196d2e7d62f0163b699dfbfd36bab53b843057d9
-
-
-
-
-    /* this.festservice.getHoursBands( */
   }
 
 
+  events: CalendarEvent[] =
+    this.bandsHours
+    ;
 
   getDecodedAccessToken(token: string): any {
     try {
@@ -137,14 +139,6 @@ export class HomeComponent implements OnInit {
 
   refresh: Subject<any> = new Subject();
 
-  events: CalendarEvent[] = [
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions,
-    }
-  ];
 
   activeDayIsOpen: boolean = true;
 
