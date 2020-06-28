@@ -78,14 +78,14 @@ export class HomeComponent implements OnInit {
             }) */
 
       for (let j of result) {
-        const fest =
+        this.bandsHours =
         {
           end: new Date(j.fin),
           start: new Date(j.inicio),
           title: j.nombre
         }
 
-        return fest;
+        return this.bandsHours;
       }
       //ESTE RESULT DEVUELVE TODOS LOS HORARIOS FESTIVAL DEL USUARIO, PRUEBA CREANOD UN USUARIOS NUEVO Y AÑADIENDOLE FESTIVALES CON BANDAS. HAY POCAS RELACIONES DE FESTIVALES CON BANDAS QUE CONTENGAN HORARIOS, PARA HACER NUEVAS Y PROBAR, USA UN USUARIO DE ADMIN Y ASÍ AÑADES RELACIONES.
     }
@@ -179,7 +179,7 @@ export class HomeComponent implements OnInit {
     this.modal.open(this.modalContent, { size: 'lg' });
   }
 
-  addEvent(): void {
+  addEventp() {
     this.events = [
       ...this.events,
       {
