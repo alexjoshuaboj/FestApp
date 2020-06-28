@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FestService } from '../fest.service';
 import * as jwt_decode from "jwt-decode";
+import differenceInCalendarISOYears from 'date-fns/differenceInCalendarISOWeekYears';
 
 // angular calendar
 
@@ -18,6 +19,7 @@ import {
   isSameDay,
   isSameMonth,
   addHours,
+  parseISO,
 } from 'date-fns';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -78,6 +80,7 @@ export class HomeComponent implements OnInit {
             }) */
 
       for (let j of result) {
+<<<<<<< HEAD
         this.bandsHours =
         {
           end: new Date(j.fin),
@@ -86,15 +89,23 @@ export class HomeComponent implements OnInit {
         }
 
         return this.bandsHours;
+=======
+
+
+        this.addEvent(j.nombre, parseISO(j.inicio), parseISO(j.fin));
+
+        //Llamo a la función AddEvent metiendole los parametros más basicos, lo suyo sería que cambiase de color, eso ya es movida tuya.
+>>>>>>> 0244f024480683853c48ddd01644c119e515b793
       }
-      //ESTE RESULT DEVUELVE TODOS LOS HORARIOS FESTIVAL DEL USUARIO, PRUEBA CREANOD UN USUARIOS NUEVO Y AÑADIENDOLE FESTIVALES CON BANDAS. HAY POCAS RELACIONES DE FESTIVALES CON BANDAS QUE CONTENGAN HORARIOS, PARA HACER NUEVAS Y PROBAR, USA UN USUARIO DE ADMIN Y ASÍ AÑADES RELACIONES.
+
     }
   }
 
+  //events no existía :)
+  events: CalendarEvent[] = [
 
-  events: CalendarEvent[] =
-    this.bandsHours
-    ;
+  ];
+
 
   getDecodedAccessToken(token: string): any {
     try {
@@ -179,21 +190,26 @@ export class HomeComponent implements OnInit {
     this.modal.open(this.modalContent, { size: 'lg' });
   }
 
+<<<<<<< HEAD
   addEventp() {
+=======
+  addEvent(eventNombre, eventStart, eventEnd): void {
+    //Aqui le ge cambiado los parametros que traia predefinidos, y le he metido unos propios (aqui se puede cambiar el color y meterselo por parametro si quieres)
+>>>>>>> 0244f024480683853c48ddd01644c119e515b793
     this.events = [
       ...this.events,
       {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
+        title: eventNombre,
+        start: startOfDay(eventStart),
+        end: endOfDay(eventEnd),
         color: colors.red,
-        draggable: true,
         resizable: {
           beforeStart: true,
           afterEnd: true,
         },
       },
     ];
+    console.log(eventNombre)
   }
 
   deleteEvent(eventToDelete: CalendarEvent) {
@@ -208,46 +224,4 @@ export class HomeComponent implements OnInit {
     this.activeDayIsOpen = false;
   }
 }
-
-/**
- *     {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions,
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
- */
-
 
